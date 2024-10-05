@@ -1,0 +1,22 @@
+- name: Add user
+  hosts: webserver1
+  become: yes
+  vars:
+    groupname: account
+    user: ansible_user
+  tasks:
+    - name: adding group
+      group:
+        name: "{{groupname}}"
+        state: present
+    - name: adding user to group
+      user:
+       name: "{{ user }}"
+       group: "{{groupname}}"
+       state: present
+       shell: /bin/bash
+
+    - name: set user password
+      user:
+        name: "{{user}}"
+        password: "{{'password' | password_hash('sha512')}}"
