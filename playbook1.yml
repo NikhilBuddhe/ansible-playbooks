@@ -1,0 +1,27 @@
+---
+- name: install the package, create users etc..
+  become: yes
+  tasks: 
+    - name: install elinks
+      yum: 
+        name: elinks
+        state: latest
+
+    - name: create users
+      users: 
+        name: niks
+        home: /home/niks
+        shell: /bin/bash
+
+    - name: create multiple users
+      users: 
+        name: "{{item}}"
+        state: present
+      loop:
+      - niks
+      - prg
+      - nisth
+      - rohi
+      - such          
+
+...

@@ -1,0 +1,15 @@
+---
+- name: my first play
+  hosts: all
+  remote_user: ansible
+  become: yes
+  task: 
+    - name: ping the servers and check wether are working
+      action: ping
+
+...
+
+## to run the playbook use command ansible-playbook first_play.yml
+
+
+    

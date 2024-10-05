@@ -1,0 +1,8 @@
+- name: Copy the files with ANSIBLE
+  host: all
+  tasks:  
+    - name: copy files
+      copy:
+        src: d:/ansible/files
+        dest: d:/ansible/files2
+        
