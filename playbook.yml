@@ -1,0 +1,14 @@
+- name: Install MariaDB on ubuntu
+  hosts: all
+  become: yes
+  gather_facts: yes
+  become_user: niks
+  tasks:
+
+    - name: update apt packages
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+    - name: Install MariaDB
+      apt:
+        name: mariabdb-server
+        state: present 
